@@ -1,0 +1,101 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>IIT COLLAGE PREDICATOR AND ANALYSIS</title>
+  </head>
+  <body style="background-color: #4c4c4c;">
+
+   <div class="d-flex justify-content">
+          <form action="/institute_cut/" method="POST" class="shadow-lg bg-black rounded p-5" style="width: 100%; background-color: #525b64;">
+            {% csrf_token %}
+            <div class="form-group row">
+              <div class="col-sm-2">
+                <select id="inputState" class="form-control" name="category" style="background-color: #4c4c4c;color: black; border: none;" required>
+                  <option value="0" selected>Choose Category</option>
+                  <option value="OPEN">OPEN</option>
+                  <option value="OBC-NCL">OBC-NCL</option>
+                  <option value="SC">SC</option>
+                  <option value="ST">ST</option>
+                  <option value="EWS">EWS</option>
+                  <option value="OPEN (PwD)">OPEN (PwD)</option>
+                  <option value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
+                  <option value="EWS (PwD)">EWS (PwD)</option>
+                  <option value="SC (PwD)">SC (PwD)</option>
+                  <option value="ST (PwD)">ST (PwD)</option>
+                </select>
+              </div>
+              <div class="col-sm-2">
+                <select id="inputState" class="form-control" name="gender" style="background-color: #4c4c4c;color: black; border: none;" required>
+                  <option value="0" selected>Choose Gender</option>
+                  <option value="Gender-Neutral">Gender-Neutral</option>
+                  <option value="Female-only (including Supernumerary)">Female-only (including Supernumerary)</option>
+                </select>
+              </div>
+              <div class="col-sm-2">
+                <select id="inputState" class="form-control" name="iit" style="background-color: #4c4c4c;color: black; border: none;" required>
+                  <option value="0" selected>Choose Institute</option>
+                  <option value="Indian Institute of Technology Bhubaneswar">Indian Institute of Technology Bhubaneswar</option>
+                  <option value="Indian Institute of Technology Bhubaneswar">Indian Institute of Technology Bhubaneswar</option>
+                  <option value="Indian Institute of Technology Bombay">Indian Institute of Technology Bombay</option>
+                  <option value="Indian Institute of Technology Mandi">Indian Institute of Technology Mandi</option>
+                  <option value="Indian Institute of Technology Delhi">Indian Institute of Technology Delhi</option>
+                  <option value="Indian Institute of Technology Indore">Indian Institute of Technology Indore</option>
+                  <option value="Indian Institute of Technology Kharagpur">Indian Institute of Technology Kharagpur</option>
+                  <option value="Indian Institute of Technology Hyderabad">Indian Institute of Technology Hyderabad</option>
+                  <option value="Indian Institute of Technology Jodhpur">Indian Institute of Technology Jodhpur</option>
+                  <option value="Indian Institute of Technology Kanpur">Indian Institute of Technology Kanpur</option>
+                  <option value="Indian Institute of Technology Madras">Indian Institute of Technology Madras</option>
+                  <option value="Indian Institute of Technology Gandhinagar">Indian Institute of Technology Gandhinagar</option>
+                  <option value="Indian Institute of Technology Patna">Indian Institute of Technology Patna</option>
+                  <option value="Indian Institute of Technology Roorkee">Indian Institute of Technology Roorkee</option>
+                  <option value="Indian School of Mines Dhanbad">Indian School of Mines Dhanbad</option>
+                  <option value="Indian Institute of Technology Ropar">Indian Institute of Technology Ropar</option>
+                  <option value="Indian Institute of Technology (BHU) Varanasi">Indian Institute of Technology (BHU) Varanasi</option>
+                  <option value="Indian Institute of Technology Guwahati">Indian Institute of Technology Guwahati</option>
+                  <option value="Indian Institute of Technology Bhilai">Indian Institute of Technology Bhilai</option>
+                  <option value="Indian Institute of Technology Goa">Indian Institute of Technology Goa</option>
+                  <option value="Indian Institute of Technology Palakkad">Indian Institute of Technology Palakkad</option>
+                  <option value="Indian Institute of Technology Tirupati">Indian Institute of Technology Tirupati</option>
+                  <option value="Indian Institute of Technology Jammu">Indian Institute of Technology Jammu</option>
+                  <option value="Indian Institute of Technology Dharwad">Indian Institute of Technology Dharwad</option>
+                  <option value="Indian Institute of Technology (ISM) Dhanbad">Indian Institute of Technology (ISM) Dhanbad</option>
+                </select>
+              </div>
+              <div class="col-sm-2">
+                <select id="inputState" class="form-control" name="courses" style="background-color: #4c4c4c;color: black; border: none;" required>
+                  <option value="0" selected>Choose Courses</option>
+                  {% for t in ops %}
+                  <option value="{{t.Academic_Program_Name}}">{{t.Academic_Program_Name|slice:":100"}}...</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-sm-2">
+                <select id="inputState" class="form-control" name="round" style="background-color: #4c4c4c;color: black; border: none;" required>
+                  <option value="0" selected>Choose Round</option>
+                  {% for j in op %}
+                  <option value="{{j.Round}}">{{j.Round|slice:":100"}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-sm-2">
+                <input type="submit" name="getdata" value="Analyse" class="form-control btn btn-primary" style="background-color: black;color: white; border: none;">
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+    <div class="container" style="margin-top: 20px;text-align: center;">
+      <img src="data:image/png;base64,{{ base64 }}" alt="Analytics Graph" style="border-radius: 20px;">
+    </div>
+  </body>
+</html>

@@ -1,0 +1,296 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+
+  <link href="{% static 'owl.carousel.min.css'%}" rel="stylesheet"/>
+
+
+    <!-- Bootstrap CSS -->
+  <link href="{% static 'bootstrap.min.css'%}" rel="stylesheet"/>
+
+
+    <!-- Style -->
+  <link href="{% static 'style.css'%}" rel="stylesheet"/>
+
+
+    <title>IIT COLLAGE PREDICATOR AND ANALYSIS</title>
+  </head>
+  <body style="background-color: #4c4c4c;"><center>
+    <h1 class="p-5 text-white text-center">IIT COLLAGE PREDICATOR AND ANALYSIS</h1>
+
+
+  {% comment %} <div class="content"> {% endcomment %}
+   <div class="col-6 d-flex justify-content">
+          <form action="/branch_cut/" method="POST" class="shadow-lg mb-5 bg-black rounded p-5" style="width: 100%; background-color: #343a40;">
+            {% csrf_token %}
+            {% comment %} <div class="form-group row">
+              <label for="rankfield" class="col-sm-2 col-form-label text-white">Rank:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="rankfield" value="" name="rank" required>
+              </div>
+            </div> {% endcomment %}
+
+            <div class="form-group row">
+              <label for="rankfield" class="col-sm-2 col-form-label text-white">Category:</label>
+              <div class="col-sm-10">
+                <select id="inputState" class="form-control" name="category">
+                  <option value="0" selected>Choose...</option>
+                  <option value="OPEN">OPEN</option>
+                  <option value="OBC-NCL">OBC-NCL</option>
+                  <option value="SC">SC</option>
+                  <option value="ST">ST</option>
+                  <option value="EWS">EWS</option>
+                  <option value="OPEN (PwD)">OPEN (PwD)</option>
+                  <option value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
+                  <option value="EWS (PwD)">EWS (PwD)</option>
+                  <option value="SC (PwD)">SC (PwD)</option>
+                  <option value="ST (PwD)">ST (PwD)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="rankfield" class="col-sm-2 col-form-label text-white">Gender:</label>
+              <div class="col-sm-10">
+                <select id="inputState" class="form-control" name="gender">
+                  <option value="0" selected>Choose...</option>
+                  <option value="Gender-Neutral">Gender-Neutral</option>
+                  <option value="Female-only (including Supernumerary)">Female-only (including Supernumerary)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="rankfield" class="col-sm-2 col-form-label text-white">IIT:</label>
+              <div class="col-sm-10">
+                <select id="inputState" class="form-control" name="iit">
+                  <option value="0" selected>Choose...</option>
+                  <option value="Indian Institute of Technology Bhubaneswar">Indian Institute of Technology Bhubaneswar</option>
+                  <option value="Indian Institute of Technology Bhubaneswar">Indian Institute of Technology Bhubaneswar</option>
+                  <option value="Indian Institute of Technology Bombay">Indian Institute of Technology Bombay</option>
+                  <option value="Indian Institute of Technology Mandi">Indian Institute of Technology Mandi</option>
+                  <option value="Indian Institute of Technology Delhi">Indian Institute of Technology Delhi</option>
+                  <option value="Indian Institute of Technology Indore">Indian Institute of Technology Indore</option>
+                  <option value="Indian Institute of Technology Kharagpur">Indian Institute of Technology Kharagpur</option>
+                  <option value="Indian Institute of Technology Hyderabad">Indian Institute of Technology Hyderabad</option>
+                  <option value="Indian Institute of Technology Jodhpur">Indian Institute of Technology Jodhpur</option>
+                  <option value="Indian Institute of Technology Kanpur">Indian Institute of Technology Kanpur</option>
+                  <option value="Indian Institute of Technology Madras">Indian Institute of Technology Madras</option>
+                  <option value="Indian Institute of Technology Gandhinagar">Indian Institute of Technology Gandhinagar</option>
+                  <option value="Indian Institute of Technology Patna">Indian Institute of Technology Patna</option>
+                  <option value="Indian Institute of Technology Roorkee">Indian Institute of Technology Roorkee</option>
+                  <option value="Indian School of Mines Dhanbad">Indian School of Mines Dhanbad</option>
+                  <option value="Indian Institute of Technology Ropar">Indian Institute of Technology Ropar</option>
+                  <option value="Indian Institute of Technology (BHU) Varanasi">Indian Institute of Technology (BHU) Varanasi</option>
+                  <option value="Indian Institute of Technology Guwahati">Indian Institute of Technology Guwahati</option>
+                  <option value="Indian Institute of Technology Bhilai">Indian Institute of Technology Bhilai</option>
+                  <option value="Indian Institute of Technology Goa">Indian Institute of Technology Goa</option>
+                  <option value="Indian Institute of Technology Palakkad">Indian Institute of Technology Palakkad</option>
+                  <option value="Indian Institute of Technology Tirupati">Indian Institute of Technology Tirupati</option>
+                  <option value="Indian Institute of Technology Jammu">Indian Institute of Technology Jammu</option>
+                  <option value="Indian Institute of Technology Dharwad">Indian Institute of Technology Dharwad</option>
+                  <option value="Indian Institute of Technology (ISM) Dhanbad">Indian Institute of Technology (ISM) Dhanbad</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="rankfield" class="col-sm-2 col-form-label text-white">Courses:</label>
+              <div class="col-sm-10">
+                <select id="inputState" class="form-control" name="courses">
+                  <option value="0" selected>Choose...</option>
+                  {% for t in ops %}
+                  <option value="{{t.Academic_Program_Name}}">{{t.Academic_Program_Name|slice:":100"}}...</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="rankfield" class="col-sm-2 col-form-label text-white">Round:</label>
+              <div class="col-sm-10">
+                <select id="inputState" class="form-control" name="round">
+                  <option value="0" selected>Choose...</option>
+                  {% for j in op %}
+                  <option value="{{j.Round}}">{{j.Round|slice:":100"}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <input type="submit" name="getdata" value="Get Data" class="form-control btn btn-primary">
+          </form>
+        </div>
+
+
+
+
+
+    {% comment %} table goes here {% endcomment %}
+    <div class="container">
+      {% comment %} <h2 class="mb-5">Table #8</h2> {% endcomment %}
+
+
+      <div class="table-responsive custom-table-responsive">
+
+        <table class="table custom-table">
+          <thead>
+            <tr>
+{% comment %}
+              <th scope="col">
+                <label class="control control--checkbox">
+                  <input type="checkbox"  class="js-check-all"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th> {% endcomment %}
+
+              {% comment %} <th scope="col">Institute</th> {% endcomment %}
+              <th scope="col">Branch</th>
+              <th scope="col">Year</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            {% comment %} <tr scope="row">
+              <th scope="row">
+                <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th> {% endcomment %}
+              {% for m in ti  %}
+              <td>
+                {{m.Academic_Program_Name}}
+              </td>
+              {% for i in yr  %}
+              <td>  <small class="d-block">{{i.Year}}</small></td>
+            {% endfor %}
+            </tr>
+            {% endfor %}
+
+
+            {% comment %} <tr class="spacer"><td colspan="100"></td></tr>
+            <tr>
+              <th scope="row">
+                <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+
+              <td>4616</td>
+              <td><a href="#">Matthew Wasil</a></td>
+              <td>
+                Graphic Designer
+                <small class="d-block">Far far away, behind the word mountains</small>
+              </td>
+              <td>+02 020 3994 929</td>
+              <td>London College</td>
+            </tr>
+            <tr class="spacer"><td colspan="100"></td></tr>
+            <tr>
+              <th scope="row">
+                <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+
+              <td>9841</td>
+              <td><a href="#">Sampson Murphy</a></td>
+              <td>
+                Mobile Dev
+                <small class="d-block">Far far away, behind the word mountains</small>
+              </td>
+              <td>+01 352 1125 0192</td>
+              <td>Senior High</td>
+            </tr>
+            <tr class="spacer"><td colspan="100"></td></tr>
+            <tr>
+              <th scope="row">
+                <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+
+              <td>9548</td>
+              <td><a href="#">Gaspar Semenov</a></td>
+              <td>
+                Illustrator
+                <small class="d-block">Far far away, behind the word mountains</small>
+              </td>
+              <td>+92 020 3994 929</td>
+              <td>College</td>
+            </tr>
+            <tr class="spacer"><td colspan="100"></td></tr>
+            <tr>
+              <th scope="row">
+                <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+
+              <td>4616</td>
+              <td><a href="#">Matthew Wasil</a></td>
+              <td>
+                Graphic Designer
+                <small class="d-block">Far far away, behind the word mountains</small>
+              </td>
+              <td>+02 020 3994 929</td>
+              <td>London College</td>
+            </tr>
+            <tr class="spacer"><td colspan="100"></td></tr>
+            <tr>
+              <th scope="row">
+                <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+
+              <td>9841</td>
+              <td><a href="#">Sampson Murphy</a></td>
+              <td>
+                Mobile Dev
+                <small class="d-block">Far far away, behind the word mountains</small>
+              </td>
+              <td>+01 352 1125 0192</td>
+              <td>Senior High</td>
+            </tr>
+            <tr class="spacer"><td colspan="100"></td></tr>
+            <tr>
+              <th scope="row">
+                <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+
+              <td>9548</td>
+              <td><a href="#">Gaspar Semenov</a></td>
+              <td>
+                Illustrator
+                <small class="d-block">Far far away, behind the word mountains</small>
+              </td>
+              <td>+92 020 3994 929</td>
+              <td>College</td>
+            </tr> {% endcomment %}
+
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+  </body>
+</html>
