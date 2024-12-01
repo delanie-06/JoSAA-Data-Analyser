@@ -1,5 +1,3 @@
-Certainly! Here's a README file for the IIT-PREDICTOR project on GitHub:
-
 # IIT-PREDICTOR
 
 IIT-PREDICTOR is a web application that predicts the chances of admission into Indian Institutes of Technology (IITs) based on JEE Advanced scores. It aims to assist students in understanding their likelihood of getting admitted to the prestigious IITs and helps them make informed decisions about their academic future.
@@ -18,9 +16,7 @@ We would like to thank the following contributors for their valuable contributio
 
 - Alexander
 - Delanie
-- Aalap
 - Rucha
-- Ayush 
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
@@ -101,8 +97,3 @@ Follow these steps to set up IIT-PREDICTOR locally:
 
 IIT-PREDICTOR is released under the [MIT License](LICENSE).
 
-## Acknowledgements
-
-IIT-PREDICTOR was created by Alex Ravi as a personal project and is provided as an open-source application for others to use and learn from. The project utilizes various open-source libraries and tools, to which the author expresses gratitude.
-
-Special thanks to the Python and Flask communities for their valuable contributions and support.
